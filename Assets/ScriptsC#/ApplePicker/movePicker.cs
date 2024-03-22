@@ -21,7 +21,7 @@ public class movePicker : MonoBehaviour
     }
     void Update()
     {
-        int randi = Random.Range(1, 1001);
+        int randi = Random.Range(1, 1201);
         if (randi < rand)
         {
             direction *= -1;
