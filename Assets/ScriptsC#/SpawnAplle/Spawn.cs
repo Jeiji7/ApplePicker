@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawn : MonoBehaviour
 {
     public GameObject objectToSpawn;
-    public float spawnRate = 0.66f;
+    public float spawnRate = 0.59f;
     private float nextSpawnTime;
 
     void Update()
