@@ -10,22 +10,21 @@ public class MovePlayer : MonoBehaviour
     [Header("DashScripts")]
     [Range(15f, 40f)]
     public float dashSpeed = 8f;
-    public float dashDuration = 0f;
-    public float dashCooldown = 1f;
+    public float dashDuration = 1f;
+    public float dashCooldown = 5f;
     public Rigidbody2D rb;
     public static bool isDashing;
+    public bool canDash = true;
 
     private void Update()
     {
-        dashCooldown += Time.deltaTime;
         if (isDashing)
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && dashCooldown >= 5)
+        if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             StartCoroutine(Dash());
-            dashCooldown = 0;
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -55,11 +54,13 @@ public class MovePlayer : MonoBehaviour
     {
         if (sideMove != 0)
         {
+            canDash = false;
             isDashing = true;
             rb.velocity = new Vector2(sideMove * dashSpeed, 0f);
             yield return new WaitForSeconds(dashDuration);
             isDashing = false;
-
+            yield return new WaitForSeconds(dashCooldown);
+            canDash = true;
         }
     }
 }
