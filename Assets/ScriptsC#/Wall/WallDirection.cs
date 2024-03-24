@@ -6,13 +6,14 @@ public class WallDirection : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-
             if (MovePlayer.sideMove == 1)
             {
+                MovePlayer.isDashing = false;
                 MovePlayer.sideMove = -1;
             }
             else if (MovePlayer.sideMove == -1)
             {
+                MovePlayer.isDashing = false;
                 MovePlayer.sideMove = 1;
             }
             Debug.Log("Player entered the trigger");
