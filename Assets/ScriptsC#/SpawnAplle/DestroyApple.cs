@@ -55,6 +55,7 @@ public class DestroyApple : MonoBehaviour
         lvlScoreEnd -= 1;
         lvlScoreStart -= 1;
         seriesOfPoint /= 2;
+        movePicker.moveTree -= 2;
         if (seriesOfPoint < 1)
         {
             seriesOfPoint = 1;

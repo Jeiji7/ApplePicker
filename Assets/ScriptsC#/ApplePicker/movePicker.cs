@@ -4,7 +4,7 @@ using UnityEngine;
 public class movePicker : MonoBehaviour
 {
     [Range(10f, 20f)]
-    public float moveTree = 10;
+    public static float moveTree = 17;
     public static float direction = 0;
     public int rand = 2;
 
