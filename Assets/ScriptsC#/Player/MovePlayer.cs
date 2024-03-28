@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MovePlayer : MonoBehaviour
 {
@@ -13,9 +14,14 @@ public class MovePlayer : MonoBehaviour
     public float dashDuration = 1f;
     public float dashCooldown = 5f;
     public Rigidbody2D rb;
-    public static bool isDashing;
-    public bool canDash = true;
+    public static bool isDashing; // остановка всех процессов которые могут перебить дэш
+    public bool canDash = true; // проеверка на возможность совершить дэш
+    public Slider slider; // слайдер
 
+    private void Awake()
+    {
+        slider = GameObject.FindObjectOfType<Slider>(); // Найти объект Slider по тегу или имени
+    }
     private void Update()
     {
         if (isDashing)
@@ -50,16 +56,26 @@ public class MovePlayer : MonoBehaviour
         rb.velocity = new Vector2(sideMove * speedMove, 0f);
 
     }
+   
     private IEnumerator Dash()
     {
         if (sideMove != 0)
         {
             canDash = false;
             isDashing = true;
+            slider.value = 0f;
             rb.velocity = new Vector2(sideMove * dashSpeed, 0f);
             yield return new WaitForSeconds(dashDuration);
             isDashing = false;
-            yield return new WaitForSeconds(dashCooldown);
+
+            float elapsedTime = 0f;
+            while (elapsedTime < dashCooldown) 
+            {
+                elapsedTime += Time.deltaTime;
+                slider.value = Mathf.Lerp(0f, 1f, elapsedTime * 0.2f);
+                yield return null;
+            }
+
             canDash = true;
         }
     }
