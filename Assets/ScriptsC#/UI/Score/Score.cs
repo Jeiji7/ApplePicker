@@ -7,11 +7,11 @@ public class Score : MonoBehaviour
     public TMP_Text uiTextScore;
     void Start()
     {
-        uiTextScore.text = $"¬аш счЄт: {DestroyApple.scorePlayer}";
+        uiTextScore.text = $"¬аш счЄт: {StatesPlayer.scorePlayer}";
     }
 
     void Update()
     {
-        uiTextScore.text = $"¬аш счЄт: {DestroyApple.scorePlayer}";
+        uiTextScore.text = $"¬аш счЄт: {StatesPlayer.scorePlayer}";
     }
 }

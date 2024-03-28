@@ -7,12 +7,6 @@ using UnityEngine;
 public class DestroyApple : MonoBehaviour
 {
     public GameObject Apple;
-    public static int countLive = 4;
-    public static float scorePlayer = 0;
-    public static float seriesOfPoint = 1;// очков за уровень
-    public static int lvlScoreStart = 0;//Уровень множителя
-    public static int lvlScoreEnd = 1;//Уровень множителя уровновешиватель
-    public static int intermediateValue = 0;//счёт очков по уровням, значение сбрасывается при -1 ед, максималка 20
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Floor"))
@@ -20,7 +14,7 @@ public class DestroyApple : MonoBehaviour
             Destroy(Apple);
             //print("- 1 жизнь");
             CountyScoreMinus();
-            countLive -= 1;
+            StatesPlayer.countLive -= 1;
         }
         else if (collision.CompareTag("Player"))
         {
@@ -32,35 +26,35 @@ public class DestroyApple : MonoBehaviour
 
     public void CountyScorePlus() //логика для подсчёта очков
     {
-        if (lvlScoreStart == lvlScoreEnd)
+        if (StatesPlayer.lvlScoreStart == StatesPlayer.lvlScoreEnd)
         {
-            seriesOfPoint *= 2;
-            lvlScoreEnd += 1;
+            StatesPlayer.seriesOfPoint *= 2;
+            movePicker.moveTree += 0.3f;
+            StatesPlayer.lvlScoreEnd += 1;
             print("улучшили кол-во очков за уровень");
         }
-        intermediateValue += 1;
-        print(intermediateValue);
-        if (intermediateValue == 5)
+        StatesPlayer.intermediateValue += 1;
+        print(StatesPlayer.intermediateValue);
+        if (StatesPlayer.intermediateValue == 15)
         {
-            intermediateValue = 0;
-            lvlScoreStart += 1;
+            StatesPlayer.intermediateValue = 0;
+            StatesPlayer.lvlScoreStart += 1;
             print("улучшили уровень");
         }
-        scorePlayer += seriesOfPoint;
-        print(scorePlayer + " point");
+        StatesPlayer.scorePlayer += StatesPlayer.seriesOfPoint;
+        print(StatesPlayer.scorePlayer + " point");
     }
     public void CountyScoreMinus()
     {
-        intermediateValue = 0;
-        lvlScoreEnd -= 1;
-        lvlScoreStart -= 1;
-        seriesOfPoint /= 2;
-        movePicker.moveTree -= 2;
-        if (seriesOfPoint < 1)
+        StatesPlayer.intermediateValue = 0;
+        StatesPlayer.lvlScoreEnd -= 1;
+        StatesPlayer.lvlScoreStart -= 1;
+        StatesPlayer.seriesOfPoint /= 2;
+        movePicker.moveTree -= 2.3f;
+        if (StatesPlayer.seriesOfPoint < 1)
         {
-            seriesOfPoint = 1;
+            StatesPlayer.seriesOfPoint = 1;
         }
     }
-
 }
 

@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class movePicker : MonoBehaviour
 {
-    [Range(10f, 20f)]
-    public static float moveTree = 17;
-    public static float direction = 0;
+    public static float moveTree;
+    public static float direction;
     public int rand = 2;
 
     void Start()
     {
+        moveTree = 17;
+        direction = 0;
         if (Random.value <= 0.5)
         {
             direction = 1;

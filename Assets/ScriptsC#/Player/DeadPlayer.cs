@@ -10,26 +10,33 @@ public class DeadPlayer : MonoBehaviour
     public GameObject Lvl3;
     public GameObject deadScreen;
     public GameObject ScoreeScreen;
-    public static int health = 1;
+    public GameObject dashSlider;
+    public static int health;
+
+    private void Start()
+    {
+        health = 1; 
+    }
     void Update()
     {
-        if (DestroyApple.countLive == 3)
+        if (StatesPlayer.countLive == 3)
         {
             Lvl1.SetActive(false);
         }
-        else if (DestroyApple.countLive == 2)
+        else if (StatesPlayer.countLive == 2)
         {
             Lvl2.SetActive(false);
         }
-        else if(DestroyApple.countLive == 1)
+        else if(StatesPlayer.countLive == 1)
         {
             Lvl3.SetActive(false);
             Debug.Log("You Deaddd");
-            deadScreen.SetActive(true);
             ScoreeScreen.SetActive(false);
+            dashSlider.SetActive(false);
+            deadScreen.SetActive(true);
             health = 0;
-            DestroyApple.countLive = 4;
-            DestroyApple.scorePlayer = 0;
+            StatesPlayer.countLive = 4;
+            StatesPlayer.scorePlayer = 0;
             Time.timeScale = 0;
         }
         
