@@ -29,13 +29,13 @@ public class DestroyApple : MonoBehaviour
         if (StatesPlayer.lvlScoreStart == StatesPlayer.lvlScoreEnd)
         {
             StatesPlayer.seriesOfPoint *= 2;
-            movePicker.moveTree += 0.3f;
+            movePicker.moveTree += 0.5f;
             StatesPlayer.lvlScoreEnd += 1;
             print("улучшили кол-во очков за уровень");
         }
         StatesPlayer.intermediateValue += 1;
         print(StatesPlayer.intermediateValue);
-        if (StatesPlayer.intermediateValue == 15)
+        if (StatesPlayer.intermediateValue == 20)
         {
             StatesPlayer.intermediateValue = 0;
             StatesPlayer.lvlScoreStart += 1;

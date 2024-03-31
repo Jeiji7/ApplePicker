@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StatesPlayer : MonoBehaviour
 {
-    public static int countLive = 4;
+    public static int countLive;
     public static float scorePlayer;
     public static float seriesOfPoint;// очков за уровень
     public static int lvlScoreStart;//Уровень множителя

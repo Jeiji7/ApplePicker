@@ -30,6 +30,8 @@ public class DeadPlayer : MonoBehaviour
         else if(StatesPlayer.countLive == 1)
         {
             Lvl3.SetActive(false);
+            float currentScore = StatesPlayer.scorePlayer;
+            PlayerPrefs.SetFloat("CurrentScore", currentScore);
             Debug.Log("You Deaddd");
             ScoreeScreen.SetActive(false);
             dashSlider.SetActive(false);

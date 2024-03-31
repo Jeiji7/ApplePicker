@@ -8,8 +8,18 @@ public class DefaulComandButton : MonoBehaviour
     public GameObject menu;
     public GameObject score;
     public GameObject dashSlider;
-    public static bool pause = false;
+    public static bool pause;
     public GameObject player;
+
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
+    private void Start()
+    {
+        pause = false;
+    }
+
     public void Restart()
     {
         Time.timeScale = 1;
@@ -48,5 +58,17 @@ public class DefaulComandButton : MonoBehaviour
                 menu.SetActive(true);
             }
         }
+    }
+    public void ExitMenu()
+    {
+        pause = false;
+        print(pause);
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void StartGame()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
