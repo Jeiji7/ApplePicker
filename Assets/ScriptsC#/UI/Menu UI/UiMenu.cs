@@ -21,4 +21,8 @@ public class UiMenu : MonoBehaviour
     {
         menu.SetActive(false);
     }
+    public void LeaderboardExit()
+    {
+        menu.SetActive(true);
+    }
 }
