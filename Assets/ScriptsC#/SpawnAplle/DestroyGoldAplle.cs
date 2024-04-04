@@ -1,26 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-
-public class DestroyApple : MonoBehaviour
+public class DestroyGoldAplle : MonoBehaviour
 {
-    public Effects effects = new Effects();
-    public GameObject Apple;
+    public GameObject AppleGold;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Floor"))
         {
-            Destroy(Apple);
-            //print("- 1 жизнь");
+            Destroy(AppleGold);
             CountyScoreMinus();
             StatesPlayer.countLive -= 1;
         }
         else if (collision.CompareTag("Player"))
         {
-            Destroy(Apple);
-            //print("+ 1 жизнь");
+            Destroy(AppleGold);
             CountyScorePlus();
         }
     }
@@ -32,7 +27,6 @@ public class DestroyApple : MonoBehaviour
             StatesPlayer.seriesOfPoint *= 2;
             movePicker.moveTree += 0.5f;
             StatesPlayer.lvlScoreEnd += 1;
-            print(movePicker.moveTree);
             print("улучшили кол-во очков за уровень");
         }
         StatesPlayer.intermediateValue += 1;
@@ -43,8 +37,7 @@ public class DestroyApple : MonoBehaviour
             StatesPlayer.lvlScoreStart += 1;
             print("улучшили уровень");
         }
-        effects.Effect();
-        StatesPlayer.scorePlayer += StatesPlayer.seriesOfPoint;
+        StatesPlayer.scorePlayer += StatesPlayer.seriesOfPoint * 20;
         print(StatesPlayer.scorePlayer + " point");
     }
     public void CountyScoreMinus()
@@ -60,4 +53,3 @@ public class DestroyApple : MonoBehaviour
         }
     }
 }
-
