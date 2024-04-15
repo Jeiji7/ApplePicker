@@ -10,6 +10,7 @@ public class DefaulComandButton : MonoBehaviour
     public GameObject dashSlider;
     public static bool pause;
     public GameObject player;
+    public GameObject StartGames;
 
     private void Awake()
     {
@@ -55,6 +56,7 @@ public class DefaulComandButton : MonoBehaviour
                 Time.timeScale = 0;
                 score.SetActive(false);
                 dashSlider.SetActive(false);
+                StartGames.SetActive(false);
                 menu.SetActive(true);
             }
         }

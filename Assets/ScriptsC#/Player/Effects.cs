@@ -4,28 +4,61 @@ using UnityEngine;
 
 public class Effects : MonoBehaviour
 {
-    public GameObject effectOne;
-    public GameObject effectTwo;
-    public GameObject effectTree;
+    public GameObject effectParticleOne;
+    public GameObject effectParticleTwo;
+    public GameObject effectParticleTree;
+    public bool starti = false;
+
+    private void Update()
+    {
+        if (starti == true)
+        {
+            StartCoroutine(Effect());
+
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.CompareTag("Apple"))
+        {
+            starti = true;
+            Effect();
+        }
+    }
+
 
     public IEnumerator Effect()
     {
         if (StatesPlayer.countLive == 4)
         {
-            effectOne.SetActive(true);
-            yield return new WaitForSeconds(1);
-            effectOne.SetActive(false);
+            if (effectParticleOne != null)
+            {
+                effectParticleOne.SetActive(true);
+                yield return new WaitForSeconds(0.7f);
+                effectParticleOne.SetActive(false);
+                starti = false;
+            }
         }
         else if (StatesPlayer.countLive == 3)
         {
-            effectTwo.SetActive(true);
-            yield return new WaitForSeconds(1);
+            if (effectParticleTwo != null)
+            {
+                effectParticleTwo.SetActive(true);
+                yield return new WaitForSeconds(0.7f);
+                effectParticleTwo.SetActive(false);
+                starti = false;
+            }
         }
         else if (StatesPlayer.countLive == 2)
         {
-            effectTree.SetActive(true);
-            yield return new WaitForSeconds(1);
-            effectTree.SetActive(false);
+            if (effectParticleTree != null)
+            {
+                effectParticleTree.SetActive(true);
+                yield return new WaitForSeconds(0.7f);
+                effectParticleTree.SetActive(false);
+                starti = false;
+            }
         }
     }
 }

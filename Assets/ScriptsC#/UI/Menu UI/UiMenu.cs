@@ -7,6 +7,7 @@ public class UiMenu : MonoBehaviour
 {
     public GameObject menu;
     public GameObject leaderboard;
+    public GameObject developers;
     public void StartGame()
     {
         SceneManager.LoadScene("GameScene");
@@ -24,5 +25,13 @@ public class UiMenu : MonoBehaviour
     public void LeaderboardExit()
     {
         menu.SetActive(true);
+    }
+    public void Developers()
+    {
+        developers.SetActive(true);
+    }
+    public void ExitDevelopers()
+    {
+        developers.SetActive(false);
     }
 }

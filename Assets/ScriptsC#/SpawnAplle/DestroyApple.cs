@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class DestroyApple : MonoBehaviour
 {
-    public Effects effects = new Effects();
     public GameObject Apple;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -43,7 +42,6 @@ public class DestroyApple : MonoBehaviour
             StatesPlayer.lvlScoreStart += 1;
             print("улучшили уровень");
         }
-        effects.Effect();
         StatesPlayer.scorePlayer += StatesPlayer.seriesOfPoint;
         print(StatesPlayer.scorePlayer + " point");
     }

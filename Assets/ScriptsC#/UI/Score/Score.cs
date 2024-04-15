@@ -7,11 +7,11 @@ public class Score : MonoBehaviour
     public TMP_Text uiTextScore;
     void Start()
     {
-        uiTextScore.text = $"¬аш счЄт: {StatesPlayer.scorePlayer}";
+        uiTextScore.text = $"¬аш счЄт: {StatesPlayer.scorePlayer} / очков за 1 €б: {StatesPlayer.seriesOfPoint}";
     }
 
     void Update()
     {
-        uiTextScore.text = $"¬аш счЄт: {StatesPlayer.scorePlayer}";
+        uiTextScore.text = $"¬аш счЄт: {StatesPlayer.scorePlayer} / очков за 1 €б: {StatesPlayer.seriesOfPoint}";
     }
 }

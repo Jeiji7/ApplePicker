@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,10 +13,16 @@ public class DeadPlayer : MonoBehaviour
     public GameObject ScoreeScreen;
     public GameObject dashSlider;
     public static int health;
-
+    [Header("MusicDead")]
+    public AudioClip musicGame;
+    private AudioSource musicSource;
+    public Music musics;
     private void Start()
     {
+        musicSource = gameObject.AddComponent<AudioSource>();
+        musicSource.clip = musicGame;
         health = 1; 
+
     }
     void Update()
     {
@@ -38,8 +45,9 @@ public class DeadPlayer : MonoBehaviour
             deadScreen.SetActive(true);
             health = 0;
             StatesPlayer.countLive = 4;
-            StatesPlayer.scorePlayer = 0;
             Time.timeScale = 0;
+            musics.musicSource.Stop();
+            musicSource.Play();
         }
         
     }
